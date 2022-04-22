@@ -1,0 +1,31 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"terminal.integrated.profiles.windows": {
+			"bash" : {
+				"path" : "c:/msys64/usr/bin/bash.exe"
+			}
+		},
+		"terminal.integrated.defaultProfile.windows": "bash",
+		"terminal.integrated.env.windows": {
+			"path": "/mingw64/bin:/usr/bin"
+		},
+		"files.autoSave": "afterDelay",
+		"files.associations": {
+			"new": "cpp",
+			"iosfwd": "cpp"
+		},
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"jeff-hykin.better-cpp-syntax",
+			"ms-vscode.cpptools-extension-pack",
+			"ms-vscode.cpptools-themes"
+		]
+	}
+}
