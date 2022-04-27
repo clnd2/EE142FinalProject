@@ -8,6 +8,9 @@
 #include <Game.hpp>
 #include "Dino.h"
 
+/**
+ * This class is our game based off of the Google Dinosaur Run game
+ */
 class DinosaurRunGame : public vmi::Game {
     public:
         // Constructor
