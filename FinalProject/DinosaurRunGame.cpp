@@ -1,8 +1,14 @@
-
+/**
+ * File for our DinosaurRunGame class
+ * @author Caleb Fender & KC Etienne
+ * HR: NONE
+ */
 #include <Game.hpp>
 #include "DinosaurRunGame.h"
 #include "Ground.h"
 #include "Dino.h"
+#include "Enemy.h"
+#include "Wall.h"
 
 using namespace vmi;
 
@@ -61,11 +67,17 @@ bool DinosaurRunGame::isOver() const
 }
 
 /**
- * Starts the game by creating everything
+ * Starts the game by creating everything needed
  */
 void DinosaurRunGame::startLevel()
 {
+    // create game objects
     new Ground();
+    new Wall();
 
+    // create our player
     dino = new Dino();
+
+    // starts creating enemies
+    Enemy::createEnemies();
 }
