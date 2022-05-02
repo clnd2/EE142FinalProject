@@ -9,6 +9,7 @@
 #include "Dino.h"
 #include "Enemy.h"
 #include "Wall.h"
+#include "Background.h"
 
 using namespace vmi;
 
@@ -33,7 +34,7 @@ void DinosaurRunGame::update(double dt)
         // display message to user
         do {
             response = Game::createMessage("Play again (Y/N)?",
-                            Vector2d(200, 200), 60, Color::Yellow
+                            Vector2d(150, 100), 60, Color::Yellow
             );
         } while (response != Key::Y && response != Key::N);
 
@@ -74,6 +75,7 @@ void DinosaurRunGame::startLevel()
     // create game objects
     new Ground();
     new Wall();
+    new Background();
 
     // create our player
     dino = new Dino();

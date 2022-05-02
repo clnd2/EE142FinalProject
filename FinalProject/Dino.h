@@ -23,6 +23,12 @@ public:
     void handleCollision(const vmi::Thing *other);
     // inherited function to move the player
     void move(double dt);
+    // get score
+    int getScore() const;
+    // player's highest score
+    static unsigned int highscore;
+    // override draw function
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
     // player's score
@@ -31,8 +37,8 @@ private:
     vmi::Text scoreText;
     // score a point
     void scorePoint();
-    // player's highest score
-    static unsigned int highscore;
     // updates high score
-    void setHighscore();
+    void setHighscore(int _score);
+    // highscore text
+    vmi::Text highText;
 };

@@ -6,6 +6,7 @@
 #pragma once
 
 #include <Thing.hpp>
+
 /**
  * The ground the player runs on
  */
