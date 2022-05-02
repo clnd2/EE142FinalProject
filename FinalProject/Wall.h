@@ -7,6 +7,9 @@
 
 #include <Thing.hpp>
 
+/**
+ * Wall used to kill enemies off screen that the player avoids
+ */
 class Wall : public vmi::Thing
 {
 public:

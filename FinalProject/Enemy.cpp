@@ -1,12 +1,7 @@
 /**
- * @file Enemy.cpp
- * @author your name (you@domain.com)
- * @brief
- * @version 0.1
- * @date 2022-05-01
- *
- * @copyright Copyright (c) 2022
- *
+ * This is the definitions for the Enemy class
+ * @author Caleb Fender & KC Etienne
+ * HR: NONE
  */
 #include "Enemy.h"
 #include <Thing.hpp>

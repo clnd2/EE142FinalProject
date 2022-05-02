@@ -9,6 +9,9 @@
 #include <Vector2d.hpp>
 #include <stdlib.h>
 
+/**
+ * Enemy for our dino
+ */
 class Enemy : vmi::MovingThing
 {
 public:

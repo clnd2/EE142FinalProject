@@ -13,6 +13,8 @@
 #include "Ground.h"
 #include "Dino.h"
 #include "Enemy.h"
+#include <sstream>
+#include "Coin.h"
 
 using namespace vmi;
 
@@ -21,36 +23,105 @@ using namespace vmi;
  */
 Dino::Dino() : MovingThing(Vector2d(100, 275), Vector2d(), Vector2d(0, 980), new SpriteShape("FinalProject/dino.png"), 0)
 {
-    //
+    // set up the text display of the score
+    scoreText.setText("0");
+    scoreText.setCharacterSize(60);
+    scoreText.setPosition(Vector2d(700, 25));
+    scoreText.setFill(Color::White);
+
+    // get highscore and set up text display of the highscore
+    std::stringstream ss;
+    ss << highscore;
+    highText.setText(ss.str());
+    highText.setCharacterSize(60);
+    highText.setPosition(Vector2d(750, 25));
+    highText.setFill(Color::White);
 }
 
+/**
+ * Deconstruct the Dino object
+ */
 Dino::~Dino()
 {
     delete shape;
 }
 
+/**
+ * Handle collisions of the Dino object with other objects
+ * @param other object colliding with Dino
+ */
 void Dino::handleCollision(const Thing *other)
 {
     // check if colliding with the ground
-    if (typeid(*other) == typeid(Ground)) {
+    if (typeid(*other) == typeid(Ground))
+    {
         v = Vector2d();
         x.setY(256);
     }
-    else if (typeid(*other) == typeid(Enemy)) {
+    // die if colliding with enemy
+    else if (typeid(*other) == typeid(Enemy))
+    {
+        die();
+    }
+    // score a point if colliding with a coin
+    else if (typeid(*other) == typeid(Coin))
+    {
         die();
     }
 }
 
 /**
  * Makes the dino move when the right keys are pressed
- * @param dt 
+ * @param dt
  */
-void Dino::move(double dt) {
+void Dino::move(double dt)
+{
     // check if Up or Space key is pressed and if dino is touching the ground
-    if ((Game::isKeyPressed(Key::Space) || Game::isKeyPressed(Key::Up)) && x.getY() == 256) {
+    if ((Game::isKeyPressed(Key::Space) || Game::isKeyPressed(Key::Up)) && x.getY() == 256)
+    {
         // constant velocity upwards
         v.setY(-500);
     }
 
     MovingThing::move(dt);
+}
+
+/**
+ * Update the score when a player scores a point
+ */
+void Dino::scorePoint()
+{
+    score++;
+
+    // update the display
+    std::stringstream ss;
+    ss << score;
+    scoreText.setText(ss.str());
+
+    if (score > highscore) {
+        setHighscore(score);
+    }
+}
+
+/**
+ * Getter function for score
+ * @return int the current score
+ */
+int Dino::getScore() const
+{
+    return score;
+}
+
+/**
+ * Sets a new highscore
+ * @param _score the new highscore
+ */
+void Dino::setHighscore(int _score)
+{
+    highscore == _score;
+
+    // update the display
+    std::stringstream ss;
+    ss << highscore;
+    highText.setText(ss.str());
 }
