@@ -25,6 +25,8 @@ public:
     void move(double dt);
     // get score
     int getScore() const;
+    // player's highest score
+    static unsigned int highscore;
 
 private:
     // player's score
@@ -33,8 +35,6 @@ private:
     vmi::Text scoreText;
     // score a point
     void scorePoint();
-    // player's highest score
-    static unsigned int highscore;
     // updates high score
     void setHighscore(int _score);
     // highscore text

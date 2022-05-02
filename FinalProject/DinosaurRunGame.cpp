@@ -9,6 +9,7 @@
 #include "Dino.h"
 #include "Enemy.h"
 #include "Wall.h"
+#include "Background.h"
 
 using namespace vmi;
 
@@ -74,6 +75,7 @@ void DinosaurRunGame::startLevel()
     // create game objects
     new Ground();
     new Wall();
+    new Background();
 
     // create our player
     dino = new Dino();

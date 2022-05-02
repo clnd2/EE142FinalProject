@@ -12,6 +12,7 @@
 #include <SpriteShape.hpp>
 #include "Wall.h"
 #include <Timer.hpp>
+#include "Coin.h"
 
 using namespace vmi;
 
@@ -58,7 +59,10 @@ void Enemy::createEnemies() {
         new Enemy(Vector2d(900, 268), "FinalProject/lowEnemy.png");
     }
 
+    // create a coin with a random x and y
+    new Coin(Vector2d(rand() % 200 + 800, rand() % 200 + 50));
+
     // now set up to create the next enemies after a delay
-    int delayTime = rand() % 4;         // between 0 and 4 seconds
+    double delayTime = rand() % 4 + 1;         // between 1 and 4 seconds
     Timer::createTimer(delayTime, []() { Enemy::createEnemies(); });
 }

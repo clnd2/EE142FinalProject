@@ -18,10 +18,12 @@
 
 using namespace vmi;
 
+unsigned int Dino::highscore = 0;
+
 /**
  * Constructs a new dino object
  */
-Dino::Dino() : MovingThing(Vector2d(100, 275), Vector2d(), Vector2d(0, 980), new SpriteShape("FinalProject/dino.png"), 0)
+Dino::Dino() : MovingThing(Vector2d(100, 275), Vector2d(), Vector2d(0, 1000), new SpriteShape("FinalProject/dino.png"), 0)
 {
     // set up the text display of the score
     scoreText.setText("0");
@@ -66,7 +68,7 @@ void Dino::handleCollision(const Thing *other)
     // score a point if colliding with a coin
     else if (typeid(*other) == typeid(Coin))
     {
-        die();
+        scorePoint();
     }
 }
 
