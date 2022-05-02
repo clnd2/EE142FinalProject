@@ -38,7 +38,7 @@ Dino::Dino() : MovingThing(Vector2d(100, 275), Vector2d(), Vector2d(0, 1000), ne
     ss << highscore;
     highText.setText(ss.str());
     highText.setCharacterSize(50);
-    highText.setPosition(Vector2d(700, 25));
+    highText.setPosition(Vector2d(725, 25));
     highText.setFill(Color::White);
 }
 

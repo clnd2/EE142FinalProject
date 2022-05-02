@@ -66,6 +66,6 @@ void Enemy::createEnemies() {
     }
 
     // now set up to create the next enemies after a delay
-    double delayTime = rand() % 4 + 1;         // between 1 and 4 seconds
+    double delayTime = rand() % 3 + 1;         // between 1 and 3 seconds
     Timer::createTimer(delayTime, []() { Enemy::createEnemies(); });
 }
