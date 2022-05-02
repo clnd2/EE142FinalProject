@@ -21,7 +21,7 @@ using namespace vmi;
  * @param _x initial position of the Enemy
  * @param _image image to use for enemy
  */
-Enemy::Enemy(const Vector2d &_x, std::string _image) : MovingThing(_x, Vector2d(-400, 0), Vector2d(), new SpriteShape(_image))
+Enemy::Enemy(const Vector2d &_x, std::string _image) : MovingThing(_x, Vector2d(rand() % 100 - 500, 0), Vector2d(), new SpriteShape(_image))
 {
     // intentionally blank
 }
@@ -59,8 +59,11 @@ void Enemy::createEnemies() {
         new Enemy(Vector2d(900, 268), "FinalProject/lowEnemy.png");
     }
 
-    // create a coin with a random x and y
-    new Coin(Vector2d(rand() % 200 + 800, rand() % 200 + 50));
+    // creates either 1, 2 or no coins per an enemy
+    for (int i = 0; i < rand() % 3; i++) {
+        // create a coin with a random x and y
+        new Coin(Vector2d(rand() % 300 + 800, rand() % 200 + 50));
+    }
 
     // now set up to create the next enemies after a delay
     double delayTime = rand() % 4 + 1;         // between 1 and 4 seconds

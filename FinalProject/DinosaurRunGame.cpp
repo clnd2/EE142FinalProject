@@ -34,7 +34,7 @@ void DinosaurRunGame::update(double dt)
         // display message to user
         do {
             response = Game::createMessage("Play again (Y/N)?",
-                            Vector2d(200, 200), 60, Color::Yellow
+                            Vector2d(150, 100), 60, Color::Yellow
             );
         } while (response != Key::Y && response != Key::N);
 

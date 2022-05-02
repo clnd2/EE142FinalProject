@@ -27,6 +27,8 @@ public:
     int getScore() const;
     // player's highest score
     static unsigned int highscore;
+    // override draw function
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
     // player's score

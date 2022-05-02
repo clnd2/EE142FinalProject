@@ -1,7 +1,7 @@
 /**
  * This file defines the Dino class
  * @author Caleb Fender & KC Etienne
- * HR: NONE
+ * HR: Dino.png taken from PixilArt.com
  */
 #include <Graphics.hpp>
 #include <SpriteShape.hpp>
@@ -15,6 +15,8 @@
 #include "Enemy.h"
 #include <sstream>
 #include "Coin.h"
+#include <Text.hpp>
+#include <Color.hpp>
 
 using namespace vmi;
 
@@ -23,20 +25,20 @@ unsigned int Dino::highscore = 0;
 /**
  * Constructs a new dino object
  */
-Dino::Dino() : MovingThing(Vector2d(100, 275), Vector2d(), Vector2d(0, 1000), new SpriteShape("FinalProject/dino.png"), 0)
+Dino::Dino() : MovingThing(Vector2d(100, 275), Vector2d(), Vector2d(0, 1000), new SpriteShape("FinalProject/dino.png"), 0), score(0)
 {
     // set up the text display of the score
     scoreText.setText("0");
-    scoreText.setCharacterSize(60);
-    scoreText.setPosition(Vector2d(700, 25));
+    scoreText.setCharacterSize(50);
+    scoreText.setPosition(Vector2d(650, 25));
     scoreText.setFill(Color::White);
 
     // get highscore and set up text display of the highscore
     std::stringstream ss;
     ss << highscore;
     highText.setText(ss.str());
-    highText.setCharacterSize(60);
-    highText.setPosition(Vector2d(750, 25));
+    highText.setCharacterSize(50);
+    highText.setPosition(Vector2d(700, 25));
     highText.setFill(Color::White);
 }
 
@@ -120,10 +122,26 @@ int Dino::getScore() const
  */
 void Dino::setHighscore(int _score)
 {
-    highscore == _score;
+    // set new highscore
+    highscore = _score;
 
     // update the display
     std::stringstream ss;
     ss << highscore;
     highText.setText(ss.str());
+}
+
+/**
+ * Draws the shape
+ * @param target 
+ * @param states 
+ */
+void Dino::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+    // draw the dino
+    Thing::draw(target, states);
+
+    // draw the score
+    scoreText.draw(target, states);
+    highText.draw(target, states);
 }
